@@ -1,0 +1,456 @@
+:root{
+  --red:#ff0033;
+  --bg:#050505;
+  --glass:rgba(20,20,20,.75);
+}
+*{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top,#2a020a 0%,#050505 55%),
+    linear-gradient(180deg,#000,#050505);
+  color:#eee;
+}
+
+a{text-decoration:none;color:inherit}
+
+.nav{
+  padding:18px 28px;
+  font-weight:900;
+  color:var(--red);
+  border-bottom:1px solid rgba(255,0,51,.3);
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(10px);
+}
+
+.glass{
+  background:var(--glass);
+  border:1px solid rgba(255,0,51,.35);
+  border-radius:18px;
+  box-shadow:0 0 30px rgba(255,0,51,.25);
+}
+
+.grid{
+  padding:28px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.card{
+  padding:18px;
+  position:relative;
+}
+.card img{
+  width:100%;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+
+.badge{
+  position:absolute;
+  top:14px;right:14px;
+  background:var(--red);
+  color:#000;
+  padding:6px 10px;
+  font-weight:800;
+  border-radius:999px;
+}
+
+.hero{
+  margin:28px;
+  padding:80px 24px;
+  text-align:center;
+}
+.hero h1{color:var(--red);font-size:44px}
+.hero p{color:#aaa;max-width:600px;margin:12px auto}
+
+.btn{
+  display:inline-block;
+  margin-top:14px;
+  padding:10px 20px;
+  border-radius:999px;
+  border:1px solid var(--red);
+  color:var(--red);
+  cursor:pointer;
+}
+.btn.primary{
+  background:var(--red);
+  color:#000;
+  box-shadow:0 0 20px var(--red);
+}
+
+.price{color:var(--red);font-size:22px;font-weight:900}
+
+input,textarea,select{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  border:1px solid rgba(255,0,51,.4);
+}
+
+.tabs{display:flex;gap:10px;margin:16px 0}
+.tab{padding:6px 14px;border:1px solid var(--red);border-radius:999px;cursor:pointer}
+.tab.active{background:var(--red);color:#000}
+
+.section{margin:24px;padding:24px}
+/* ===== NEON GLOW ENHANCEMENT ===== */
+
+.card{
+  transition:all .35s ease;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:
+    0 0 25px rgba(255,0,51,.4),
+    0 0 60px rgba(255,0,51,.25);
+}
+
+.btn{
+  transition:all .25s ease;
+}
+.btn:hover{
+  background:var(--red);
+  color:#000;
+  box-shadow:
+    0 0 18px var(--red),
+    0 0 40px rgba(255,0,51,.6);
+}
+
+.hero{
+  animation:heroIn .9s ease forwards;
+}
+
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:none}
+}
+
+.badge{
+  animation:pulse 1.6s infinite alternate;
+}
+
+@keyframes pulse{
+  from{box-shadow:0 0 10px var(--red)}
+  to{box-shadow:0 0 22px var(--red)}
+}
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .6s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+@keyframes cardIn{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:none}
+}
+.card{
+  animation:cardIn .5s ease both;
+}
+#particles{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+}
+.glitch{
+color:var(--red);
+position:relative;
+font-size:48px;
+font-weight:900;
+}
+.glitch::before,.glitch::after{
+content:attr(data-text);
+position:absolute;
+left:0;top:0;width:100%;
+opacity:.7;
+}
+.glitch::before{color:#ff6b81;left:2px;animation:g1 2s infinite}
+.glitch::after{color:#ff0033;left:-2px;animation:g2 1.5s infinite}
+@keyframes g1{0%{clip-path:inset(0 0 90% 0)}50%{clip-path:inset(30% 0 40% 0)}}
+@keyframes g2{0%{clip-path:inset(80% 0 0 0)}50%{clip-path:inset(10% 0 60% 0)}}
+.slider{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+}
+.slider .card{
+min-width:260px;
+scroll-snap-align:center;
+}
+.step{display:none}
+.step.active{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}}
+.admin-card{
+border:1px dashed rgba(255,0,51,.4);
+padding:14px;
+margin:12px 0;
+transition:.3s;
+}
+.admin-card:hover{
+box-shadow:0 0 20px rgba(255,0,51,.4);
+transform:scale(1.02);
+}
+.visual-showcase{
+  padding:32px 28px;
+  overflow:hidden;
+}
+
+.showcase-track{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:10px;
+}
+
+.showcase-track img{
+  height:220px;
+  border-radius:18px;
+  border:1px solid rgba(255,0,51,.3);
+  box-shadow:0 0 25px rgba(255,0,51,.25);
+  scroll-snap-align:center;
+  transition:.4s;
+}
+
+.showcase-track img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 45px rgba(255,0,51,.6);
+}
+.discord-float{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:56px;
+  height:56px;
+  background:#5865F2;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 25px rgba(88,101,242,.8);
+  z-index:999;
+  transition:.3s;
+}
+
+.discord-float img{
+  width:28px;
+}
+
+.discord-float:hover{
+  transform:scale(1.12);
+  box-shadow:0 0 45px rgba(88,101,242,1);
+}
+.story{
+  padding:48px 28px;
+  max-width:900px;
+  margin:auto;
+  text-align:left;
+  color:#cfcfcf;
+  font-size:17px;
+  line-height:1.8;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 28px;
+  color:#ff0033;
+}
+
+.logo{
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.nav-links a{
+  margin-left:16px;
+  color:#ff0033;
+  text-decoration:none;
+  font-size:14px;
+  opacity:.8;
+}
+
+.nav-links a:hover{
+  opacity:1;
+  text-shadow:0 0 6px #ff0033;
+}
+#typing{
+  white-space:pre-line;
+  font-size:17px;
+  line-height:1.8;
+  color:#cfcfcf;
+}
+.typing-box{
+  max-width:900px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.9;
+  color:#d0d0d0;
+}
+
+.typing-box p{
+  margin:0 0 22px 0;
+}
+
+.typing-box .highlight{
+  color:var(--red);
+  font-weight:600;
+  text-shadow:0 0 12px rgba(255,0,51,.5);
+}
+.story{
+  padding:64px 28px;
+  max-width:980px;
+  margin:auto;
+  position:relative;
+}
+
+.story-line{
+  width:80px;
+  height:3px;
+  background:linear-gradient(90deg,var(--red),transparent);
+  margin-bottom:28px;
+  box-shadow:0 0 14px rgba(255,0,51,.6);
+}
+
+.typing-box.premium{
+  font-size:19px;
+  line-height:1.9;
+  color:#d6d6d6;
+}
+
+.typing-box.premium p{
+  margin:0 0 26px 0;
+  opacity:0;
+  animation:fadeUp .6s ease forwards;
+}
+
+.typing-box.premium p:first-child{
+  font-size:24px;
+  font-weight:600;
+  color:#fff;
+}
+
+.typing-box.premium p:last-child{
+  font-size:26px;
+  font-weight:700;
+  color:var(--red);
+  text-shadow:0 0 18px rgba(255,0,51,.6);
+}
+
+.typing-box .highlight{
+  color:var(--red);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+.payment-box{
+  margin-top:30px;
+  text-align:center;
+}
+
+.qris-img{
+  width:220px;
+  max-width:80%;
+  margin:18px auto;
+  display:block;
+  border-radius:14px;
+  box-shadow:0 0 25px rgba(255,0,51,.5);
+}
+.discord-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:56px;
+  height:56px;
+  background:#5865F2;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  box-shadow:0 0 25px rgba(88,101,242,.8);
+  transition:.3s;
+}
+
+.discord-float img{
+  width:28px;
+  height:28px;
+}
+
+.discord-float:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 35px rgba(88,101,242,1);
+}
+/* ===== PRODUCT CARD FIX ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+}
+
+/* GRID GAMBAR */
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* BIKIN GRID 3 GAMBAR */
+.card .img-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* DESKRIPSI RINGKAS */
+.desc-short {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.4;
+  max-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ===== SCROLLABLE PRODUCT DESCRIPTION ===== */
+.desc-scroll {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #cfcfcf;
+
+  max-height: 90px;       /* tinggi box deskripsi */
+  overflow-y: auto;       /* AKTIF SCROLL */
+  padding-right: 6px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ff0033 transparent;
+}
+
+/* Scrollbar (Chrome / Edge) */
+.desc-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.desc-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff0033, #ff0066);
+  border-radius: 10px;
+}
+
+.desc-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.desc-scroll {
+  position: relative;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}

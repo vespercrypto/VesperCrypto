@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>User Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">USER DASHBOARD</div>
+
+<section class="section glass">
+  <h2>Order History</h2>
+  <div id="list"></div>
+</section>
+
+<script src="app.js"></script>
+<script>
+  const o = orders();
+  const list = document.getElementById("list");
+
+  if(!o.length){
+    list.innerHTML = "<p>Belum ada order.</p>";
+  } else {
+    list.innerHTML = o.map(x=>`
+      <div style="margin-bottom:12px">
+        <b>${x.name}</b> — ${x.dur} — <span style="color:#ff0033">Rp ${x.price}</span><br>
+        <small>${x.time}</small>
+      </div>
+    `).join("");
+  }
+</script>
+
+</body>
+</html>

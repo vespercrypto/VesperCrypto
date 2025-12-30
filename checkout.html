@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">CHECKOUT</div>
+
+<section class="section glass">
+
+  <!-- PAYMENT -->
+  <div class="payment-box">
+    <h3>Scan QRIS untuk Pembayaran</h3>
+    <img src="assets/qris.png" alt="QRIS Vesper" class="qris-img">
+    <p>Setelah melakukan pembayaran, klik tombol di bawah untuk konfirmasi ke admin.</p>
+  </div>
+
+  <!-- SUMMARY -->
+  <p id="summary" style="margin-top:20px"></p>
+
+  <!-- CONFIRM -->
+  <button class="btn primary" onclick="finish()">SAYA SUDAH BAYAR</button>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const q = new URLSearchParams(location.search);
+  const summary = document.getElementById("summary");
+
+  summary.innerText =
+    `Durasi: ${q.get("dur")} | Harga: Rp ${q.get("price")}`;
+});
+
+function finish(){
+  const q = new URLSearchParams(location.search);
+  const msg =
+`Halo Admin Vesper,
+Saya sudah melakukan pembayaran.
+
+Durasi: ${q.get("dur")}
+Harga: Rp ${q.get("price")}`;
+
+  window.open(
+    "https://wa.me/6285199122336?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
+}
+</script>
+<a href="https://discord.gg/Vj5hWpwq"
+   class="discord-float"
+   target="_blank"
+   title="Join Discord">
+  <img src="assets/discord.png" alt="Discord">
+</a>
+</body>
+</html>

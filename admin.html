@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">ADMIN PANEL</div>
+
+<!-- ADD PRODUCT -->
+<section class="section glass">
+  <h2>Add Product</h2>
+
+  <input id="pid" placeholder="Product ID (unik)">
+  <input id="pname" placeholder="Nama Produk">
+  <textarea id="pdesc" placeholder="Deskripsi"></textarea>
+  <input id="pimgs" placeholder="Image path (assets/p1.jpg)">
+  <input id="pstock" type="number" placeholder="Stock">
+
+  <textarea id="pdur" placeholder="Contoh:
+1 Month=99000
+3 Months=249000
+Lifetime=999000"></textarea>
+
+  <button class="btn primary" onclick="add()">SAVE PRODUCT</button>
+</section>
+
+<!-- PRODUCT LIST -->
+<section class="section glass">
+  <h2>Product List</h2>
+  <div id="productList"></div>
+</section>
+
+<script src="app.js"></script>
+<script src="admin.js"></script>
+
+<script>
+function renderAdminList(){
+  const list = document.getElementById("productList");
+  const d = db();
+  list.innerHTML = "";
+
+  if(!Object.keys(d).length){
+    list.innerHTML = "<p>Belum ada produk.</p>";
+    return;
+  }
+
+  for(const id in d){
+    list.innerHTML += `
+      <div class="admin-card glass">
+        <b>${d[id].name}</b><br>
+        <small>${id}</small><br>
+        Stock: ${d[id].stock}<br><br>
+       <button class="btn" onclick="deleteProduct('${id}')">DELETE</button>
+      </div>
+    `;
+  }
+}
+
+renderAdminList();
+</script>
+
+</body>
+</html>
